@@ -19,12 +19,17 @@ RUN \
     zip \
     unzip \
     python \
+    python-dev \
     python-pip \
     python-yaml \
     && apt-get clean
 
+RUN python -v
+RUN pip -v
+
 RUN pip install awscli --upgrade
 
-RUN npm install -g yarn && yarn global add lambda-local babel-preset-env node-lambda
+RUN npm install -g yarn --update && yarn global add lambda-local babel-preset-env node-lambda --latest
+
 
 
