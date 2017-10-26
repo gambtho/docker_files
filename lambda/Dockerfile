@@ -22,6 +22,7 @@ RUN \
     python-dev \
     python-pip \
     python-yaml \
+    redis-server \
     && apt-get clean
 
 RUN python -v
