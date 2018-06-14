@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
-ARG tf_version="0.11.3"
-ARG go_version="1.9.3"
+ARG tf_version="0.11.7"
+ARG go_version="1.10.3"
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
