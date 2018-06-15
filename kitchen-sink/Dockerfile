@@ -42,10 +42,8 @@ RUN curl -sL https://deb.nodesource.com/setup_9.x | bash - \
  && npm install -g yarn
 
 # AWS CLI
-RUN pip install --upgrade pip \
- && pip install -U setuptools \
- && pip install -U pip \
- && pip install -U awscli
+RUN pip install -U setuptools wheel \
+&& pip install -U awscli
 
 # Terraform 
 RUN curl https://releases.hashicorp.com/terraform/${tf_version}/terraform_${tf_version}_linux_amd64.zip -o terraform_${tf_version}_linux_amd64.zip \
