@@ -17,7 +17,14 @@ RUN apt-get update \
     unzip \
     wget \
     zip \
+    xvfb \
     redis-server \
+    libgtk2.0-0 \
+    libnotify-dev \
+    libgconf-2-4 \
+    libnss3 \
+    libxss1 \
+    libasound2 \
     default-jdk \
     build-essential checkinstall \
     libssl-dev \
