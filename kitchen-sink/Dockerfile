@@ -52,8 +52,8 @@ RUN curl -sL https://deb.nodesource.com/setup_9.x | bash - \
 RUN pip install -U setuptools wheel \
 && pip install -U awscli
 
-RUN curl -o /usr/local/bin/ecs-cli https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-darwin-amd64-latest
-
+RUN curl -o /usr/local/bin/ecs-cli https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-latest \
+&& chmod +x /usr/local/bin/ecs-cli
 
 # Terraform 
 RUN curl https://releases.hashicorp.com/terraform/${tf_version}/terraform_${tf_version}_linux_amd64.zip -o terraform_${tf_version}_linux_amd64.zip \
