@@ -55,6 +55,9 @@ RUN pip install -U setuptools wheel \
 RUN curl -o /usr/local/bin/ecs-cli https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-latest \
 && chmod +x /usr/local/bin/ecs-cli
 
+# https://github.com/gilt/kms-s3 
+RUN curl -L https://raw.githubusercontent.com/gilt/kms-s3/master/install | /bin/bash
+
 # Terraform 
 RUN curl https://releases.hashicorp.com/terraform/${tf_version}/terraform_${tf_version}_linux_amd64.zip -o terraform_${tf_version}_linux_amd64.zip \
     && unzip terraform_${tf_version}_linux_amd64.zip -d /usr/local/bin \
