@@ -1,6 +1,7 @@
 FROM ubuntu:16.04
 ARG tf_version="0.11.7"
 ARG go_version="1.10.3"
+ARG docker_version="1.21.2"
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -35,7 +36,9 @@ RUN ( curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - ) 
  && apt-key fingerprint 0EBFCD88 \
  && add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
  && apt-get update \
- && apt-get install -y docker-ce
+ && apt-get install -y docker-ce \
+ && curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose \
+ && chmod +x /usr/local/bin/docker-compose
 
 # SBT
 RUN ( echo "deb https://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list.d/sbt.list ) \
@@ -54,9 +57,6 @@ RUN pip install -U setuptools wheel \
 
 RUN curl -o /usr/local/bin/ecs-cli https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-latest \
 && chmod +x /usr/local/bin/ecs-cli
-
-# https://github.com/gilt/kms-s3 
-RUN curl -L https://raw.githubusercontent.com/gilt/kms-s3/master/install | /bin/bash
 
 # Terraform 
 RUN curl https://releases.hashicorp.com/terraform/${tf_version}/terraform_${tf_version}_linux_amd64.zip -o terraform_${tf_version}_linux_amd64.zip \
