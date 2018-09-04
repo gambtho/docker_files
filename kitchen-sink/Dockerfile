@@ -6,6 +6,12 @@ ARG docker_version="1.21.2"
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
     apt-transport-https \
+    build-base \
+    gcc \ 
+    abuild \
+    binutils \
+    binutils-doc \ 
+    gcc-doc \
     ca-certificates \
     curl \
     dmsetup \
